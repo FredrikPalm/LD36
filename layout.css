@@ -1,0 +1,170 @@
+body
+{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: #EEE;
+	margin:0px;
+	-webkit-transition: background 4s ease-in-out;
+	-moz-transition: background 4s ease-in-out;
+	-o-transition: background 4s ease-in-out;
+	transition: background 4s ease-in-out;
+}
+
+*
+{
+	cursor: default;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none;   /* Chrome/Safari/Opera */
+	-khtml-user-select: none;    /* Konqueror */
+	-moz-user-select: none;      /* Firefox */
+	-ms-user-select: none;       /* Internet Explorer/Edge */
+	user-select: none;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+#Amaru
+{
+	position: absolute;
+	width: 20%;
+	right: 10%;
+	bottom: 10%;
+}
+
+#Fire {
+    width: 15%;
+    right: 30%;
+    position: absolute;
+    bottom: 5%;
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    opacity: 0.0;
+    -webkit-transition: none; 
+    -moz-transition: none;
+    -o-transition: none;
+     transition: none;
+}
+
+#DayOfWinter {
+    font-size: 2em;
+    position: absolute;
+    left: 10%;
+    top: 5%;
+}
+
+#Rations
+{
+	position: absolute;
+	right: 2%;
+	top: 2%;
+}
+
+#GroupContainer
+{
+	position: absolute;
+	/* font-family: "Alegreya Sans SC"; */
+	right: 10%;
+	top: 7%;
+	font-size: 1.1em;
+	font-family: Arial;
+	color: #797979;
+	min-width: 180px;
+}
+
+.character {
+    margin-bottom: 1em;
+}
+
+.character .name {
+	margin-right: 20px;
+}
+
+.character .action {
+	float: right;
+}
+
+.character .effect {
+    position: absolute;
+    display: inline-block;
+    left: 0%;
+    text-align: center;
+    width: 100%;
+    padding: 3px;
+    opacity: 0.0;
+}
+
+#EventContainer, #InventoryContainer
+{
+    position: absolute;
+    bottom: 40%;
+    left: 12%;
+    right: 20%;
+    font-family: Arial;
+    font-size: 1.8em;
+    color: #a5a5a5;
+    opacity: 0.0;
+    /* font-family: "Alegreya Sans SC"; */
+}
+
+#EventChoices, #InventoryList
+{
+	margin-top: 1em;
+	max-width: 20em;
+	width: 70%;
+}
+
+.event.choice, .inventory.listItem
+{
+    margin-top: 1em;
+    margin-left: 1em;
+    overflow: hidden;
+    font-size: 0.75em;
+    white-space: nowrap;
+}
+
+.inventory.listItem .button:hover, .inventory.listItem .button:active
+{
+	cursor: pointer;
+	color: #d2d2d2;
+	/* padding-left: 2em; */
+	width: 32%;
+	/* text-align: center; */
+}
+
+.inventory.listItem span {
+    width: 33.3333%;
+    display: inline-block;
+}
+
+.inventory.listItem .left {
+
+}
+
+.inventory.listItem .middle {
+	text-align: center;
+}
+
+.inventory.listItem .right {
+	text-align: right;
+}
+
+
+.button:hover
+{
+	cursor: pointer;
+}
+
+.event.choice:hover
+{
+	cursor: pointer;
+	color: #888;
+	padding-left: 0.2em;
+}
+
+.note {
+    color: #6b6a9e;
+}
