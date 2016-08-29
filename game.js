@@ -229,14 +229,14 @@ function pulse(i, freq, min, max)
 function itemEvent(text, adultOnly, effect)
 {
 	var choices = [];
-	for(let i = 0; i < group.length; i++){
-		if(group[i].dead() || (adultOnly && !group[i].adult)) continue;
+	$.each(group, function(i, p){
+		if(group[i].dead() || (adultOnly && !group[i].adult)) return true;
 		var e = effect;
 		if(effect !== undefined && !isNaN(effect)){
 			e = function(){ group[i].weapon = effect; };
 		}
 		choices.push(new Choice("Give to " + group[i].name, e));
-	}
+	});
 	return new Event(text, function(){ return true; }, choices);
 }
 
@@ -406,10 +406,8 @@ function selectRations()
 
 	var list = $("#InventoryList").empty();
 
-	for(let i = 0; i < group.length; i++)
-	{
-		if(group[i].dead()) continue;
-		var p = group[i];
+	$.each(group, function(i, p){
+		if(group[i].dead()) return true;
 		var div = $('<div class="inventory listItem">');
 		div.append('<span class="name left">'+p.name+'</span>');
 		var h  = "hungry";
@@ -421,7 +419,7 @@ function selectRations()
 		button.click(function(){ giveRation(group[i]); });
 		div.append(button); 
 		list.append(div);
-	}
+	});
 
 	var store = $("<div>Save the rest for tomorrow</div>");
 	store.click(finishRations).addClass("event choice button");
@@ -502,12 +500,7 @@ function showEvent(event)
 	$("#EventContent").html(event.content).fadeTo(0, 1.0);
 	$("#EventContainer").fadeTo(0,0).fadeTo(700, 1.0);
 	var choices = $("#EventChoices").empty();
-	for(let i = 0; i < event.choices.length; i++){
-		var choice = event.choices[i];
-		for(var k = 0; k < group.length; k++){
-
-		}
-
+	$.each(event.choices, function(i, choice){
 		var div = $('<div class="event choice">'+choice.text+'</div>').click(function(e){ 
 			var effect = event.choices[i].effect;
 			if(effect) effect();
@@ -527,7 +520,7 @@ function showEvent(event)
 		});
 
 		choices.append(div);							
-	}
+	});
 }
 
 function startEvent(events)
