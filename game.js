@@ -524,6 +524,7 @@ function showEvent(event)
 	$.each(event.choices, function(i, choice){
 		var div = $('<div class="event choice">'+choice.text+'</div>').click(function(e){ 
 			var effect = event.choices[i].effect;
+			endEvent();
 			if(effect) effect();
 			$("#EventContent").fadeTo("fast", 0.0);
 			var ch = this;
@@ -535,7 +536,6 @@ function showEvent(event)
 				else
 					$(t).fadeTo('fast', 0.0);
 			});
-			endEvent();
 			//console.log(this);
 			//$(this).fadeTo(2.0, 0.00);
 		});
