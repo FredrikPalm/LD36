@@ -49,6 +49,8 @@ var nightTimer = 0;
 var nightStage = 0;
 var events = [];
 var rations = [ ]; // how many days old?
+var firewood = 0;
+var fireStrength = 0;
 
 var walking = true;
 
@@ -300,6 +302,7 @@ function tick()
 
 		var s = (rations.length == 1) ? " ration" : " rations";
 		$("#Rations").text(toUpper(toCount(rations.length)) + s);
+		$("#Firewood").text(toUpper(toCount(firewood)) + " firewood");
 
 		var eventChance = 0.0;
 		if(walking && !night && time % 1200 == 0 && (lastEvent.days != days || (timeSince(lastEvent.time) > (3 * 60 * 60)))){
@@ -331,11 +334,12 @@ function tick()
 	if(fireTick % 3 == 0){
 			var fire = $("#Fire"); 
 			var gt = days * 24 * 3600 + (fireTick * 30);
-			var saturate = pulse(gt, 7200, 1, 5) + '';
-			fire.css("-webkit-filter", "blur(1.0px) saturate("+saturate+")");
-			fire.css("-moz-filter", "blur(1.0px) saturate("+saturate+")");
-			fire.css("-o-filter", "blur(1.0px) saturate("+saturate+")");
-			fire.css("filter", "blur(1.0px) saturate("+saturate+")");
+			var saturate = pulse(gt, 7200, 1, 5 * fireStrength) + '';
+			var grayscale = (100 * pulse(gt, 3600, 1.0 - Math.max(0.1, fireStrength - 0.1), 1.0 - Math.max(0.3, fireStrength))) + "%";
+			fire.css("-webkit-filter", "blur(1.0px) saturate("+saturate+") grayscale("+grayscale+")");
+			fire.css("-moz-filter", "blur(1.0px) saturate("+saturate+") grayscale("+grayscale+")");
+			fire.css("-o-filter", "blur(1.0px) saturate("+saturate+") grayscale("+grayscale+")");
+			fire.css("filter", "blur(1.0px) saturate("+saturate+") grayscale("+grayscale+")");
 		}
 	}
 }
@@ -353,7 +357,7 @@ function dayTime()
 		}
 	}
 
-	if(walking && time % 300 == 0 && Math.random() > 0.97)
+	if(walking && time % 300 == 0 && Math.random() > 0.9)
 	{
 		var remove = Math.random() > 0.5;
 		if(remove){
@@ -365,9 +369,15 @@ function dayTime()
 			var ability = 0;
 			for(var i = 0; i < group.length; i++)
 				ability += group[i].huntAbility();
-			if(Math.random() < ability){
+			var c = Math.round(  (1.0 + ability) * Math.pow(random(0, 1), 3)  );
+				
+			if(Math.random() > 0.35){
+				firewood = Math.min(12, firewood + c);
+			}
+			else if(Math.random() < ability){
 				var c = Math.round(  (1.0 + ability) * Math.pow(random(0, 1), 3)  );
 				for(var i = 0; i < c; i++){
+					if(rations.length >= 12) break;
 					rations.push(0);
 				}	
 			}
@@ -466,6 +476,8 @@ function nightTime()
 {	
 	if(nightStage == 0 && nightTimer++ >= 100){
 		//TODO
+		fireStrength = clamp(firewood / 7, 0, 1);
+		
 		nightStage++;
 		
 		if(rations.length <= 0){
@@ -484,6 +496,7 @@ function nightTime()
 		var nullEvent = nightEvent(s, 1.0, "Try to sleep");
 		var event = (group.length == 1) ? nullEvent : pickEvent(nightEvents, nullEvent);
 		showEvent(event);
+		firewood = Math.max(0, firewood - 7);
 	}
 }
 
