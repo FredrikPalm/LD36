@@ -50,10 +50,13 @@ body
 }
 
 #DayOfWinter {
-    font-size: 2em;
+    font-size: 3em;
     position: absolute;
-    left: 10%;
-    top: 5%;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+    opacity: 0.0;
+    color: #565656;
 }
 
 #Inventory {
@@ -67,16 +70,20 @@ body
 {
 	position: absolute;
 	/* font-family: "Alegreya Sans SC"; */
-	right: 10%;
-	top: 7%;
+	right: 5%;
+	top: 10%;
 	font-size: 1.1em;
 	font-family: Arial;
 	color: #797979;
-	min-width: 180px;
+	min-width: 250px;
 }
 
 .character {
-    margin-bottom: 1em;
+    /* margin-bottom: 1em; */
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    white-space: nowrap;
+    /* height: 1.0em; */
 }
 
 .character .name {
@@ -101,7 +108,7 @@ body
 {
     position: absolute;
     bottom: 40%;
-    left: 12%;
+    left: 10%;
     right: 20%;
     font-family: Arial;
     font-size: 1.8em;

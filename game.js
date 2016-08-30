@@ -125,7 +125,7 @@ function Character(name, adult)
 		if(this.injury	> 0.5) return "injured";
 		if(this.illness	> 0.5) return "ill";
 		if(this.hunger	> 0.5) return "hungry";
-		if(this.morale	> 0.5) return "depresed";
+		if(this.morale	> 0.5) return "depressed";
 		if(this.stamina	> 0.5) return "tired";
 		if(this.warmth	> 0.5) return "cold";
 		if(this.fear	> 0.5) return "worried";
