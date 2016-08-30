@@ -306,12 +306,20 @@ function tick()
 
 		var eventChance = 0.0;
 		if(walking && !night && time % 1200 == 0 && (lastEvent.days != days || (timeSince(lastEvent.time) > (3 * 60 * 60)))){
-			eventChance = (timeSince(lastEvent.time) / (16 * 60 * 60));
+			eventChance = 0.8 * (timeSince(lastEvent.time) / (16 * 60 * 60));
 			if(Math.random() > 1.0 - eventChance){
 				var dayEvents = [];
 				dayEvents.push(new Event("It is cold, and the winds are strong", function(){ return true; }, [new Choice("Seek shelter", function(){ walking = false; }), new Choice("Persist", function(){})]));
 				dayEvents.push(new Event("It is cold, and the winds are strong", function(){ return true; }, [new Choice("Seek shelter", function(){ walking = false; }), new Choice("Persist", function(){})]));
-				dayEvents.push(itemEvent("A *spear* lies on the ground", true, 2));
+				dayEvents.push(new Event("A circle of dead crows lie on ground", function(){ return true; }, [new Choice("Move on", function(){ })]));
+				dayEvents.push(itemEvent("A *spear* lies in the snow", true, 2));
+				dayEvents.push(itemEvent("A small *axe* rests on a rock", true, 1));
+				dayEvents.push(itemEvent("A *dagger* sticks out of the snow", true, 1));
+				
+				//var axe = itemEvent("Built an axe", true, 2);
+				//var tool = itemEvent("Built an axe", true, 2);
+				//dayEvents.push(new Event("There is a" , function(){ return true; }, [new Choice("Seek shelter", function(){ walking = false; }), new Choice("Persist", function(){})]));
+				
 				if(startEvent(dayEvents)){
 					lastEvent = { days, time };
 				}
