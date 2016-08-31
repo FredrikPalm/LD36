@@ -521,7 +521,20 @@ function showEvent(event)
 	$("#EventContent").html(event.content).fadeTo(0, 1.0);
 	$("#EventContainer").fadeTo(0,0).fadeTo(700, 1.0);
 	var choices = $("#EventChoices").empty();
+	if(event.choices.length == 0)
+	{
+		console.log("no choices for event ", event);
+
+		setTimeout(function()
+			{
+				endEvent();
+				$("#EventContent").fadeTo("fast", 0.0);
+			}, 2000);
+		return;
+	}
+
 	$.each(event.choices, function(i, choice){
+		if(choice.text == "") console.log("choice text is empty for ", event);
 		var div = $('<div class="event choice">'+choice.text+'</div>').click(function(e){ 
 			var effect = event.choices[i].effect;
 			endEvent();
