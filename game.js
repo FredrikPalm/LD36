@@ -254,7 +254,7 @@ function tick()
 				})]));
 			var s = 0.1;
 			$("body").css("background", rgb(s,s,s,1.0));
-			$("#Fire, #Amaru").delay(1000).fadeTo(1000, 0.0);
+			$("#Fire, #Amru").delay(1000).fadeTo(1000, 0.0);
 		}
 
 		time += 30;
@@ -476,7 +476,7 @@ var nightEvents =
 
 	//craft items
 	nightEvent("Vaecra has built a small *bow*", 0.05, "We can use it", 0.4),
-	nightEvent("Egil plays with Amaru", 0.05, "Everyone laughs", 0.4),
+	nightEvent("Egil plays with Amru", 0.05, "Everyone laughs", 0.4),
 	//bad events
 ];
 
