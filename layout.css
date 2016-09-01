@@ -341,5 +341,32 @@ body
 }
 
 .note {
-    color: #6b6a9e;
+	color: #6b6a9e;
+}
+
+
+@media screen and (max-height: 800px), screen and (max-width: 800px)
+{	
+	body 
+	{
+		font-size: 65%;
+		overflow: hidden;
+	}
+	#GroupContainer
+	{
+		/* min-width: 130px; */
+		min-width: 20%;
+	}
+	#ActionContainers .action.box
+	{
+		max-width: 22%;
+		max-height: 25%;
+		margin: 2px;
+		padding: 4px;
+	}
+	#EventContainer, #InventoryContainer 
+	{
+	    /* bottom: 10%; */
+	    top: 40%;
+	}
 }
