@@ -39,12 +39,34 @@ body
 	transition: all 0.5s ease-in-out;
 }
 
+.ui-draggable-dragging
+{
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-o-transition: none !important;
+	transition: none !important;
+}
+
+.ui-state-active, .ui-droppable-active
+{
+	background: rgba(123,123,123,0.3);
+}
+
+.ui-state-hover, .ui-droppable-hover
+{
+	background: rgba(150,150,159,0.3);
+}
+
 #Amru
 {
 	position: absolute;
 	width: 20%;
 	right: 10%;
 	bottom: 10%;
+}
+.action.box #Amru {
+    right: 5%;
+    top: 5%;
 }
 
 #Fire {
@@ -79,16 +101,149 @@ body
     text-align: center;
 }
 
+#ActionContainers {
+    /* float: right; */
+    /* right: 30%; */
+    /* position: absolute; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    width: 100%;
+    /* align-content: center; */
+    margin: 10px;
+    /* left: 10%; */
+    display: inline-block;
+    /* position: absolute; */
+    white-space: nowrap;
+}
+
+.box {
+    border-radius: 22px;
+    background: rgba(121, 121, 121, 0.04);
+    padding: 10px;
+    width: 150px;
+    height: 135px;
+    display: inline-block;
+    margin: 20px;
+    /* border: thin solid rgba(0, 0, 0, 0.06); */
+    position: relative;
+}
+
+.action.box .content {
+    height: 1px;
+    width: 100%;
+    width: 30%;
+    background-color: rgba(0, 0, 0, 0.22);
+    position: absolute;
+    top: 50%;
+    /* bottom: 40%; */
+    /* left: 150px; */
+    left: 30%;
+}
+
+.characterIcons {
+    width: 100%;
+    height: 80%;
+    z-index: 0;
+}
+
+.action.box .header {
+    width: 50%;
+    text-align: center;
+    /* font-weight: 100; */
+}
+
+.action.box .footer {
+    /* bottom: 10%; */
+    /* position: relative; */
+    width: 100%;
+    text-align: center;
+    font-size: 0.9em;
+    position: relative;
+    /* min-width: 10px; */
+    /* min-height: 10px; */
+    /* top: 80%; */
+    display: inline-block;
+}
+
+.characterIcon:nth-child(4) {
+    top: initial;
+    left: initial;
+    bottom: 22%;
+    right: 28%;
+    /* text-align: center; */
+}
+.characterIcon:nth-child(3) {
+    /* top: 75% !important; */
+    top: initial;
+    bottom: 22%;
+}
+.characterIcon:nth-child(2) {
+    right: 28% !important;
+    left: initial;
+}
+
+.characterIcon:nth-child(5) {
+    left: 46%;
+    top: 36%;
+    /* text-align: center; */
+}
+
+.characterIcons #Amru {
+    right: 5%;
+}
+
+.characterIcon {
+    position: absolute;
+    font-size: 2em;
+    top: 22%;
+    z-index: 1;
+    left: 28%;
+    /* right: 25%; */
+    font-family: 'Amacita SC', cursive;
+    color: #525252;
+    display: inline-block;
+    -webkit-transition: all 1.0s ease-in-out;
+    -moz-transition: all 1.0s ease-in-out;
+    -o-transition: all 1.0s ease-in-out;
+    transition: all 1.0s ease-in-out;
+    -webkit-transform: translate3d(0,0,0);
+}
+
+.vr, .hr
+{
+    background-color: rgba(0, 0, 0, 0.17);
+    position: absolute;
+}
+
+.vr {
+    height: 30%;
+    width: 1px;
+    top: 35%;
+    left: 50%;
+}
+
+.hr
+{
+	height: 1px;
+    width: 30%;
+    top: 50%;
+    left: 35%;
+}
+
 #GroupContainer
 {
 	position: absolute;
-	/* font-family: "Alegreya Sans SC"; */
+	font-family: "Alegreya Sans SC";
 	right: 5%;
 	top: 10%;
-	font-size: 1.1em;
+	/* font-size: 1.1em; */
+	/* margin-left: 10px; */
+	/* margin: 20px; */
 	font-family: Arial;
 	color: #797979;
 	min-width: 250px;
+	/* position: relative; */
+	display: inline-block;
 }
 
 .character {
@@ -120,7 +275,7 @@ body
 #EventContainer, #InventoryContainer
 {
     position: absolute;
-    bottom: 40%;
+    bottom: 35%;
     left: 10%;
     right: 20%;
     font-family: Arial;

@@ -168,6 +168,27 @@ $(document).ready(function(){
 	$("#Fire").css("opacity", 0.0);
 
 	showDayOfWinter();
+
+	$(".characterIcon").draggable({ accept:function(){ return modifyActions; }, revert: "invalid" });
+	$("#ActionContainers .action.box").droppable({
+	accept: function(draggable) { 
+		var container = $(this).children(".characterIcons");
+		if(container.children().length >= 4) return false;
+		return true;
+	},
+
+	activeClass: ".ui-state-active",
+    hoverClass: ".ui-state-hover",
+
+	drop: function( event, ui ) {
+		console.log("dropped");
+
+		ui.draggable.removeAttr("style");
+		$(this).children(".characterIcons").append(ui.draggable);
+		updateActions();
+		return true;
+	}
+	});
 });
 
 function rgb(r,g,b,a)
@@ -242,6 +263,17 @@ function itemEvent(text, adultOnly, effect)
 	return new Event(text, function(){ return true; }, choices);
 }
 
+function updateActions()
+{
+	$("#ActionContainers .action.box").each(function(i, e){
+		var characters = [];
+		$(this).children(".characterIcons").children().each(function(i, c){
+			characters.push($(c).text());
+		});
+		//$(this).children(".footer").text(": " + characters.join(" "));
+	});
+}
+
 var fireTick = 0;
 function tick()
 {
@@ -263,6 +295,8 @@ function tick()
 				time = 0; days++; $("Time").text(days + "Days"); nextDay = true; 		
 			}
 		}
+
+		updateActions();
 
 		if(!night && time > 18 * 60 * 60){
 			updateGroupUI();

@@ -10,7 +10,11 @@
 
 <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans+SC' rel='stylesheet' type='text/css'>
 
+<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
 
 <script type="text/javascript" src="game.js"></script>
 
@@ -27,6 +31,36 @@
 </div>
 
 <div id="Time"></div>
+
+<div id="ActionContainers">
+	<div id="HuntContainer" class="action box">
+		<div class="header">Hunt</div>
+		<div class="vr"></div>
+		<div class="hr"></div>
+		<div class="characterIcons">
+			<div class="characterIcon">H</div>
+			<div class="characterIcon">V</div>
+		</div>
+	</div>
+
+	<div id="GatherContainer" class="action box">
+		<div class="header">Gather</div>
+		<div class="vr"></div>
+		<div class="hr"></div>
+		<div class="characterIcons">
+			<div class="characterIcon">R</div>
+		</div>
+	</div>
+
+	<div id="RestContainer" class="action box">
+		<div class="header">Rest</div>
+		<div class="characterIcons">
+			<div class="characterIcon">S</div>
+			<div class="characterIcon">E</div>
+		</div>
+		<img id="Amru" src="amru.svg" />
+	</div>
+</div>
 
 <div id="GroupContainer">
 	<p>If you see this, the game is not working!
