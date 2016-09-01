@@ -252,8 +252,7 @@ function tick()
 				{
 					paused = true;
 				})]));
-			var s = 0.1;
-			$("body").css("background", rgb(s,s,s,1.0));
+			$("#Tint").css("background", "rgba(0, 0, 0, 0.9)");
 			$("#Fire, #Amru").delay(1000).fadeTo(1000, 0.0);
 		}
 
@@ -271,8 +270,8 @@ function tick()
 			night = true;
 			nightTimer = 0;
 			nightStage = 0;
-			var s = 0.1;
-			$("body").css("background", rgb(s,s,s,1.0));
+			var s = 0.00;
+			$("#Tint").css("background", rgb(s,s,s,0.85));
 			$("#Fire").delay(1000).fadeTo(1000, 0.6);
 		}
 		else if(nextDay && night && time > 6 * 60 * 60)
@@ -283,7 +282,7 @@ function tick()
 			nextDay = false;
 			night = false;
 			var s = 0.933;
-			$("body").css("background", rgb(s,s,s,1.0));
+			$("#Tint").css("background", rgb(s,s,s,0.2));
 			$("#Fire").fadeTo(1000, 0.0);
 			lastEvent = { days, time };
 
