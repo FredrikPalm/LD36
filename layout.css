@@ -179,26 +179,19 @@ html, body {
 }
 
 .characterIcon:nth-child(4) {
-    top: initial;
-    left: initial;
-    bottom: 22%;
-    right: 28%;
-    /* text-align: center; */
+    top: 50%;
+    left: 60%;
 }
 .characterIcon:nth-child(3) {
-    /* top: 75% !important; */
-    top: initial;
-    bottom: 22%;
+    top: 60%;
 }
 .characterIcon:nth-child(2) {
-    right: 28% !important;
-    left: initial;
+    left: 60%;
 }
 
 .characterIcon:nth-child(5) {
     left: 46%;
     top: 36%;
-    /* text-align: center; */
 }
 
 .characterIcons #Amru {
