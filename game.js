@@ -158,6 +158,13 @@ function showDayOfWinter()
 $(document).ready(function(){
 	setInterval(tick, 10);
 
+	$(window).bind(
+	  'touchmove',
+	   function(e) {
+	    e.preventDefault();
+	  }
+	);
+
 	group.push(new Character("Haphor", true));
 	group.push(new Character("Siri", true));
 	group.push(new Character("Ragvan", true));
