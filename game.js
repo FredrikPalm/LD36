@@ -46,7 +46,7 @@ var finalDay = 90;
 var group = [];
 
 var nightTimer = 0;
-var nightStage = 0;
+var nightStage = 0; var nightDone = false;
 var events = [];
 var rations = [ ]; // how many days old?
 var firewood = 0;
@@ -302,7 +302,7 @@ function tick()
 
 		time += 30;
 		if(time >= 60 * 60 * 24){ 
-			if(nightStage < 2) time -= 30;
+			if(!nightDone) time -= 30;
 			else{
 				time = 0; days++; $("Time").text(days + "Days"); nextDay = true; 		
 			}
@@ -525,9 +525,23 @@ var nightEvents =
 	//bad events
 ];
 
+var dayRoundup = [];
+
 function nightTime()
 {	
 	if(nightStage == 0 && nightTimer++ >= 100){
+		//TODO
+		fireStrength = clamp(firewood / 7, 0, 1);
+		
+		for(var i = 0; i < dayRoundup.length; i++){
+			//show day results
+			
+		}
+
+		nightStage++;
+		nightTimer = 0;	
+	}
+	else if(nightStage == 1 && nightTimer++ >= 100){
 		//TODO
 		fireStrength = clamp(firewood / 7, 0, 1);
 		
@@ -542,7 +556,7 @@ function nightTime()
 		}
 		nightTimer = 0;	
 	}
-	else if(nightStage == 2 && nightTimer++ >= 200){
+	else if(nightStage == 3 && nightTimer++ >= 200){
 		//show night event
 		nightStage++;
 		var s = (group.length == 1) ? "You sit quietly" : "You sit together quietly"; 
@@ -550,6 +564,7 @@ function nightTime()
 		var event = (group.length == 1) ? nullEvent : pickEvent(nightEvents, nullEvent);
 		showEvent(event);
 		firewood = Math.max(0, firewood - 7);
+		nightDone = true;
 	}
 }
 
