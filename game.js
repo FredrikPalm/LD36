@@ -632,16 +632,21 @@ function endEvent()
 	paused = false; 
 }
 
+function formatText(text)
+{
+	return text.replace(/\*([a-zA-Z]*)\*/gi, "<span class='note'>$1</span>");
+}
+
 function Event(content, condition, choices)
 {
-	this.content = content.replace(/\*([a-zA-Z]*)\*/gi, "<span class='note'>$1</span>");
+	this.content = formatText(content);
 	this.condition = condition;
 	this.choices = choices;
 }
 
 function Choice(text, effect)
 {
-	this.text = text;
+	this.text = formatText(text);
 	this.effect = effect;
 }
 
