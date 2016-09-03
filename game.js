@@ -146,8 +146,13 @@ function getSecond(time){
 }
 
 function showDayOfWinter()
-{
+{	
 	var s = (days + 1 == finalDay) ? "Last" : toUpper(number(days+1)); 
+	$("#Tint").delay(500).queue(function() {
+	            		$(this).addClass("blurred").dequeue().delay(2500).queue(function() {
+	            			$(this).removeClass("blurred").dequeue();
+	            		});
+	           		});
 	$("#DayOfWinter").text(s + " Day of Winter").delay(1000).fadeTo(2000, 1.0, 
 		function()
 		{
